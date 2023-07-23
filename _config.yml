@@ -1,5 +1,5 @@
 # Setup
-title: Dark Poole
+title: SitedeLuis
 url: https://getpoole.com
 paginate: 1
 baseurl: ""
@@ -32,17 +32,15 @@ sass:
 
 # Specify the author for blog posts
 author:
-  name: Mark Otto
-  url: https://twitter.com/mdo
-  email: markdotto@gmail.com
+  name: Luis
 
 # Custom vars
 version: 3.0.0
 
 # Navbar page list
 nav:
-  - title: Blog
+  - title: Archivo
     url: /archive
 
-  - title: About
+  - title: Sobre-Mí
     url: /about
