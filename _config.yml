@@ -1,6 +1,6 @@
 # Setup
 title: SitedeLuis
-url: https://getpoole.com
+url: https://sitedeluis.github.io/
 paginate: 2
 baseurl: ""
 permalink: pretty
@@ -10,6 +10,7 @@ plugins:
   - jekyll-gist
   - jekyll-paginate
   - jekyll-seo-tag
+  - jekyll-feed
 
 # Optimize Jekyll
 exclude:
