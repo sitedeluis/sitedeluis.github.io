@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Sobre Mí
+title: Acerca de
 ---
 
 <!---

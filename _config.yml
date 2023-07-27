@@ -1,7 +1,7 @@
 # Setup
 title: SitedeLuis
 url: https://getpoole.com
-paginate: 1
+paginate: 2
 baseurl: ""
 permalink: pretty
 
@@ -42,5 +42,5 @@ nav:
   - title: Archivo
     url: /archive
 
-  - title: Sobre-Mí
+  - title: Acerca
     url: /about
