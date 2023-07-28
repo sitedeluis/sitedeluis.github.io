@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <language>es-es</language>
-    <title>{{ site.title | xml_escape }}</title>
-    <description>{{ site.description | xml_escape }}</description>
-    <atom:link href="{{ site.url }}/feed/index.xml" rel="self" type="application/rss+xml" />
-    <link>{{ site.url }}{{ site.baseurl }}/</link>
+    <title>{{ SitedeLuis | xml_escape }}</title>
+    <description>{{ Pequeña cantidad de bytes de info | xml_escape }}</description>
+    <atom:link href="https://sitedeluis.github.io/feed/index.xml" rel="self" type="application/rss+xml" />
+    <link>https://sitedeluis.github.io/</link>
     <pubDate>{{ site.time | date_to_rfc822 }}</pubDate>
     <lastBuildDate>{{ site.time | date_to_rfc822 }}</lastBuildDate>
     <generator>Jekyll v{{ jekyll.version }}</generator>
