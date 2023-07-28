@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  " Por qué este es el momento de negociar la paz. El alegato de Jürgen Habermas"
+title:  "Por qué este es el momento de negociar la paz. El alegato de Jürgen Habermas"
 author: "Luis"
 tags: ArticulosResub
 ---
