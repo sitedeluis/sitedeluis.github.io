@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Twitter demanda a la organización sin fines de lucro que rastrea el discurso de odio"
+title: "Twitter demanda a organización sin fines de lucro que rastrea el discurso de odio"
 author: "Luis"
 tags: ArticulosResub
 ---
