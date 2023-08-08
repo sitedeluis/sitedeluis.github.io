@@ -5,7 +5,7 @@ title: Archivos
 
 # Archivo
 
-📚 Aqui todas las publicaciones por fecha y año. 
+📚 Aquí están todas las publicaciones por fecha y año. 
 
 {% assign postsByYearMonth = site.posts | group_by_exp: "post", "post.date | date: '%B %Y'" %}
 {% for yearMonth in postsByYearMonth %}

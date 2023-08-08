@@ -39,6 +39,7 @@ Una versión de este artículo aparece impresa en  , Sección B, Página 3 de la
 
 Por Sheera Frenkel y Ryan Mac - 31 de julio de 2023
 
-(Este articulo esta [publicado](https://www.nytimes.com/2023/07/31/technology/twitter-x-center-for-countering-digital-hate.html) originalmente en ingles, lo he traducido para mayor facilidad uwu)
+(Este articulo esta [publicado](https://www.nytimes.com/2023/07/31/technology/twitter-x-center-for-countering-digital-hate.html) originalmente en ingles, lo he traducido para mayor facilidad.
+Este es el [informe](https://counterhate.com/research/toxic-twitter-anti-lgbtq/) del Center for Countering Digital Hate)
 
 
