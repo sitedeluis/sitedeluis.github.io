@@ -11,6 +11,8 @@ plugins:
   - jekyll-paginate
   - jekyll-seo-tag
   - jekyll-pdf-embed
+  - jekyll-remote-theme
+  - jekyll-include-cache
 
 # Optimize Jekyll
 exclude:
