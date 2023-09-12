@@ -13,4 +13,4 @@ Lo publico aquí porque creo que tiene algo de potencial.
 [PDF](/assets/pdf/RelatoriaVerdadMentiraExtramoral.pdf)
 
 
-{% pdf"{{ site.baseurl }}/assets/pdf/RelatoriaVerdadMentiraExtramoral.pdf" no_link %}
+{% pdf "{{ site.baseurl }}/assets/pdf/RelatoriaVerdadMentiraExtramoral.pdf" no_link %}
