@@ -11,3 +11,5 @@ Retomando al texto, este no tiene otra intención más que retomar un poco de la
 Lo publico aquí porque creo que tiene algo de potencial. 
 
 [PDF](/assets/pdf/RelatoriaVerdadMentiraExtramoral.pdf)
+
+<embed src="{{ site.baseurl }}/assets/pdf/RelatoriaVerdadMentiraExtramoral.pdf" height="768" width="704">
