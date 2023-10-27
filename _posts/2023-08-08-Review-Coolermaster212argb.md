@@ -8,7 +8,7 @@ tags: Reviews
 
 <p style="text-align: justify;">
 Hace ya un par de meses que tengo el disipador <a href="https://www.coolermaster.com/la/es-la/catalog/coolers/cpu-air-coolers/hyper-212-argb/">Cooler Master Hyper 212 ARGB</a> y pues quisiera hacer una pequeña review ademas de mencionar algunas opiniones personales sobre el mismo. 
-Cabe resaltar que si desea ver las pruebas y el paso a paso de como fue que realice esta review o alguna cuestion de su metodologia tiene el <a href="https://www.youtube.com/watch?v=kWEAtQoxwOA">video</a> donde se muestra claramente todo lo que aquí yace resumido. Una vez dicho esto ya podemos entrar en materia. 
+Cabe resaltar que si desea ver las pruebas y el paso a paso de como fue que realice esta review o alguna cuestion de su metodologia tiene el <a href="https://www.youtube.com/watch?v=A9CXhD5LBd0">video</a> donde se muestra claramente todo lo que aquí yace resumido. Una vez dicho esto ya podemos entrar en materia. 
 En cuanto a las especificaciones del producto tenemos lo siguiente:
 </p>
 
