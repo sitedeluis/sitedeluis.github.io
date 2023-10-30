@@ -3,6 +3,7 @@ layout: post
 title: "Cundinamarca, donde las elecciones ya tienen un Rey"
 author: "Luis"
 tags: ArticulosResub
+comments: true
 ---
 ## El exgobernador Jorge Rey opta por un tono moderado, sin riesgos ante una victoria casi segura. Cuenta con el apoyo de una decena de partidos y de centenares de aspirantes en los municipios
 ![Texto alternativo]({{site.baseurl}}/assets/images/rey.jpg "Jorge Emilio Rey, candidato a la Gobernación de Cundinamarca. CORTESÍA")
