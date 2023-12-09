@@ -10,8 +10,9 @@
 
           <nav class="nav">
             {% for nav in site.nav %}
-            <small><a href="{{ nav.url }}">{{ nav.title }}</a></small>
+            <a href="{{ nav.url }}">{{ nav.title }}</a>
             {% endfor %}
+            <a href="feed.xml">RSS</a>
           </nav>
         </h3>
       </header>
