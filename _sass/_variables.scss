@@ -32,7 +32,7 @@
 
   @font-face{
     font-family: Crimson;
-    src: url("../assets/fonts/CrimsonText-Regular.ttf");
+    src: local('Crimson Text'), url("../assets/fonts/CrimsonText-Regular.ttf");
   }
 
   --body-font: "Crimson";
