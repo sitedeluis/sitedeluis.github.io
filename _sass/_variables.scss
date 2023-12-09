@@ -30,12 +30,9 @@
   --blue-400: #4dabf7;
   --yellow-100: #fff3bf;
 
-  @font-face{
-    font-family: Crimson;
-    src: local('Crimson Text'), url("../assets/fonts/CrimsonText-Regular.ttf");
-  }
+  @import url('https://fonts.googleapis.com/css2?family=Crimson+Text&display=swap');
 
-  --body-font: "Crimson";
+  --body-font: 'Crimson Text', serif;
   --body-font-size: 22px;
   --body-line-height: 1.4;
   --body-color: var(--gray-700);
