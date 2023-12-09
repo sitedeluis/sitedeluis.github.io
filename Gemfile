@@ -7,5 +7,6 @@ group :jekyll_plugins do
     gem "jekyll-paginate"
     gem "jekyll-seo-tag"
     gem "jekyll-include-cache"
-    gem "jekyll-pdf-embed"
+    gem "jekyll-feed"
+    gem "faraday-retry"
 end

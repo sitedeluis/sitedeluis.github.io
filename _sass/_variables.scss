@@ -30,11 +30,14 @@
   --blue-400: #4dabf7;
   --yellow-100: #fff3bf;
 
-  --body-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
-    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --body-font-size: 20px;
-  --body-line-height: 1.5;
+  @font-face{
+    font-family: Crimson;
+    src: url("assets/fonts/CrimsonText-Regular.ttf");
+  }
+
+  --body-font: "Crimson";
+  --body-font-size: 22px;
+  --body-line-height: 1.4;
   --body-color: var(--gray-700);
   --body-bg: #fff;
 
