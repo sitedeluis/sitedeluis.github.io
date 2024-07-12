@@ -43,9 +43,9 @@ deb https://www.deb-multimedia.org bookworm main non-free
 
 ```
 Y continuamos a guardar los cambios. Podremos actualizar los repos, sin embargo, nos arrojará un error debido a la falta de la key para el repo multimedia.
-Para instalarla es necesario ir al siguiente [link](https://deb-multimedia.org/dists/stable/main/binary-amd64/package/deb-multimedia-keyring) y descargar el archivo **.deb** luego procederemos
-a la instalación con un:
+Para instalarla es necesario ir al siguiente [link](https://deb-multimedia.org/dists/stable/main/binary-amd64/package/deb-multimedia-keyring) y descargar el archivo **.deb**. Por consola tambien podremos realizar la instalación mediante un:
 ```
+sudo wget https://deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
 sudo dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
 ```
 Una vez finalizado un simple: 
@@ -55,6 +55,14 @@ sudo apt update && sudo apt upgrade
 ```
 Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repo *multimedia* complementa y mejora el soporte de audio y video para Debian gracias a algunas licencias y 
 al traer versiones más recientes de algunos programas. 
+
+## firmware-linux-nonfree
+
+Es un paquete que contiene el firmware privativo para una buena cantidad de hardware. Altamente recomendado para su instalación:
+
+```
+sudo apt install firmware-linux-nonfree
+```
 
 ## IntelGPU
 
@@ -76,20 +84,20 @@ Nosotros manualmente podemos modificar esto. Para el caso del kernel se plantean
 ## Kernel
 En primer lugar y como la opcion mas sencilla y facil que existe, es actualizar el kernel para que este a la par de los Backports de Debian.
 Esto se puede realizar desde el **gestor de paquetes synaptic** y buscando el siguiente termino: **linux-image**. Despues, dentro de la inmensa cantidad de resultados que apareceran
-nosotros tenemos que escoger la version mas actualizada. Para la fecha de escritura de este articulo me topo con la version **linux-image-6.7.12+bpo-amd64**. Recuerde que la version a instalar
-en su pc es la que tenga dentro de su descripcion **Linux X.X for 64-bit PCs**. Despues proceda a marcar para instalar, espere unos momentos y reinice su PC. Despues de eso ya tendra su Kernel actualizado.
+nosotros tenemos que escoger la versión mas actualizada. Para la fecha de escritura de este articulo me topo con la version **linux-image-6.7.12+bpo-amd64**. Recuerde que la versión a instalar
+en su pc es la que tenga dentro de su descripción **Linux X.X for 64-bit PCs**. Despues proceda a marcar para instalar, espere unos momentos y reinicie su PC. Después de eso ya tendrá su Kernel actualizado.
  
 ![kernel]({{site.baseurl}}/assets/images/kernel67.png)
 
-Como segunda opcion esta la de usar los Customs Kernels. Vienen mucho mas actualizados en comparacion al del repositorio de Debian y obtienen configuraciones especiales para jugar. 
+Como segunda opción esta la de usar los Customs Kernels. Vienen mucho mas actualizados en comparación al del repositorio de Debian y obtienen configuraciones especiales para jugar. 
 Yo recomiendo tanto [XanMod](https://xanmod.org/) como [Liquorix](https://liquorix.net/).
-Recuerde ver la guia de instalacion de los respectivos kernels ademas como comparativas de acuerdo a su necesidad. Aqui solo son mencionados como alternativas.
+Recuerde ver la guía de instalacion de los respectivos kernels además como comparativas de acuerdo a su necesidad. Aquí solo son mencionados como alternativas.
 
 ## MESA
 
-MESA es la pila grafica de linux. En otras palabras, son los drivers de video para el sistema que vienen a nivel de kernel siendo esta una descripcion hecha de forma muy vaga. Debian nunca los actualiza de por si, salvo una vez cada nueva version lanzada.
+MESA es la pila gráfica de Linux. En otras palabras, son los drivers de vídeo para el sistema que vienen a nivel de kernel siendo esta una descripcion hecha de forma muy vaga. Debian nunca los actualiza de por si, salvo una vez cada nueva versión lanzada.
 En el caso de su 12 lanzamiento viene por defecto en la 22.3.6 la cual ya tiene un tiempo y es perfectamente funcional para jugar. Pero en el caso que desee aprovechar las mejoras de las nuevas versiones y el soporte para nuevo hardware. 
-Es necesario agregar un repositorio extra del tipo PPA (que es exclusivo de ubuntu) a Debian. Para eso haremos lo siguiente:
+Es necesario agregar un repositorio extra del tipo PPA (que es exclusivo de Ubuntu) a Debian. Para eso haremos lo siguiente:
 ```
 sudo nano /etc/apt/sources.list.d/kisak-mesa.list
 ```
@@ -115,7 +123,7 @@ inxi -Gx
 ```
 
 ## Gaming
-Para gaming es necesario activar el soporte de 32bits para algunos paquetes escenciales tanto de steam como de otros programas y juegos. Adicionalmente instalar los paquetes de video de 32bits que por defecto no vienen
+Para gaming es necesario activar el soporte de 32bits para algunos paquetes esenciales tanto de Steam como de otros programas y juegos. Adicionalmente instalar los paquetes de vídeo de 32bits que por defecto no vienen
 instalados. 
 
 ```
