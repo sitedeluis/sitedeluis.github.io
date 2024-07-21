@@ -3,6 +3,7 @@ layout: post
 title:  "Configuracion para Debian 12"
 author: "Luis"
 tags: Ensayo
+comments: true
 ---
 
 Estas son las configuraciones básicas que aplico al momento de instalar Debian en cualquier máquina. A nivel general se trata
@@ -20,15 +21,13 @@ sudo nano /etc/apt/sources.list
 Una vez allí procedemos a añadir:
 
 ```
-#Repo oficial no-free
+#Repo oficial
 deb https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
 #deb-src https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
 
 #Actualizaciones
 deb https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
 #deb-src https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
-deb https://ftp.debian.org/debian/ bookworm-proposed-updates contrib main non-free non-free-firmware
-#deb-src https://ftp.debian.org/debian/ bookworm-proposed-updates contrib main non-free non-free-firmware
 
 #Seguridad
 deb https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
@@ -64,9 +63,14 @@ Es un paquete que contiene el firmware privativo para una buena cantidad de hard
 sudo apt install firmware-linux-nonfree
 ```
 
-## IntelGPU
+En el caso de tener una GPU de RADEON instalar:
 
-Si usted tiene una GPU **intel** le recomiendo adcionalmente que instale el siguiente paquete:
+```
+sudo apt install firmware-amd-graphics
+```
+Muy util por cierto si tiene un hardware reciente de la compañia o si tiene problemas en algunos programas de edición como DavinciResolve.
+
+Y si usted tiene una GPU **intel** le recomiendo adicionalmente que instale el siguiente paquete:
 
 ```
 sudo apt install intel-media-va-driver-non-free
@@ -76,16 +80,92 @@ de su contraparte llamada *intel-media-va-driver* y que segun el [GitHub](https:
 
 Hasta aquí son las configuraciones más básicas para una mejor experiencia en Debian. A continuación explicare los pasos para actualizar el kernel y la configuración para gaming.
 
-# Configuracion Kernel, MESA y gaming
+# Configuracion de Lightdm y Grub
+
+Bastante sencilla su configuracion, realmente por defecto esta bien pero en lo personal prefiero que aparezca de primeras al inicio mi usuario en vez de escribirlo manualmente. Para corregir esto:
+
+```
+sudo nano /etc/lightdm/lightdm.conf
+```
+Y buscar la linea para descomentarla:
+```
+greeter-hide-users=false
+```
+Ahora aparecerá nuestro usuario al inicio. En caso de necesitar mas configuraciones de inicio del sistema es muy recomendable usar el programa:
+```
+sudo apt install lightdm-gtk-greeter-settings
+```
+
+Para cambiar la resolucion del grub de inicio hay que buscar el archivo: 
+```
+sudo nano /etc/default/grub
+```
+Y en el apartado de:
+```
+#GRUB_GFXMODE=640x480
+```
+Hay que descomentarlo y proceder a establecer la resolución de su monitor.
+También podemos quitar el plymouth buscando la linea:
+```
+GRUB_CMDLINE_LINUX_DEFAULT=""
+```
+Y dejarlo solo con comillas. 
+
+## Tecla de inicio XFCE
+
+En XFCE por defecto no funciona el atajo de presionar tecla de inicio, Windows o Super. Para que se despliegue dicho menú. Es necesario añadir el `whisker menu` dentro de la barra de tareas.
+Una vez añadido ir a configuración general de XFCE o el `xfce4-settings-manager`. Una vez dentro ir a `teclado` y buscar la pestaña `Atajo de las aplicaciones`. Añadiremos una nueva cuya orden sera:
+```
+xfce4-popup-whiskermenu
+```
+Al momento de dar click en aceptar, nos pedira que presionemos una tecla para poder asignarla. Presione la tecla de inicio, Windows o Super.
+
+# Instalar programas extra
+Mis programas recomendados de momento son los siguientes. Recuerde que si tiene de escritorio a KDE o GNOME ya estan instalados algunos o sus correspondientes alternativas (para el caso de KDE):
+
+```
+sudo apt install vlc mpv
+
+sudo apt install gdebi
+
+sudo apt install ttf-mscorefonts-installer
+
+sudo apt install fonts-ubuntu
+
+sudo apt install galculator/gnome-calculator (son dos programas, el primero es mas ligero)
+
+sudo apt install gnome-firmware
+
+sudo apt install gnome-software gnome-package-updater
+
+sudo apt install gnome-disk-utility 
+
+sudo apt install gparted
+
+sudo apt install lshw neofetch cpufetch cpu-x btop htop
+```
+
+## Programas backports recomendados
+En mi caso es la selección personal de los mejores programas para tener en backports. Para instalar un paquete **backports** es de la siguiente forma:
+```
+sudo apt install -t bookworm-backports <package>
+```
+Siguiendo esta logica recomiendo los siguientes paquetes:
+```
+sudo apt install -t bookworm-backports libreoffice papirus-icon-theme telegram-desktop 
+```
+Recuerde que también `pipewire` también es una excelente opción para su instalación. 
+
+# Configuración Kernel, MESA y gaming
  
 Para esta parte, es necesario recalcar que Debian por si mismo no ofrece el mas actualizado soporte de hardware en su version estable. En otras variantes si, pero no es el caso. 
-Nosotros manualmente podemos modificar esto. Para el caso del kernel se plantean dos caminos a seguir que explico a continuacion.
+Nosotros manualmente podemos modificar esto. Para el caso del kernel se plantean dos caminos a seguir que explico a continuación.
 
 ## Kernel
-En primer lugar y como la opcion mas sencilla y facil que existe, es actualizar el kernel para que este a la par de los Backports de Debian.
+En primer lugar y como la opción mas sencilla y fácil que existe, es actualizar el kernel para que este a la par de los Backports de Debian.
 Esto se puede realizar desde el **gestor de paquetes synaptic** y buscando el siguiente termino: **linux-image**. Despues, dentro de la inmensa cantidad de resultados que apareceran
 nosotros tenemos que escoger la versión mas actualizada. Para la fecha de escritura de este articulo me topo con la version **linux-image-6.7.12+bpo-amd64**. Recuerde que la versión a instalar
-en su pc es la que tenga dentro de su descripción **Linux X.X for 64-bit PCs**. Despues proceda a marcar para instalar, espere unos momentos y reinicie su PC. Después de eso ya tendrá su Kernel actualizado.
+en su pc es la que tenga dentro de su descripción **Linux X.X for 64-bit PCs**. Después proceda a marcar para instalar, espere unos momentos y reinicie su PC. Después de eso ya tendrá su Kernel actualizado.
  
 ![kernel]({{site.baseurl}}/assets/images/kernel67.png)
 
@@ -117,7 +197,7 @@ Actualizamos el sistema:
 ```
 sudo apt update && sudo apt upgrade
 ```
-Puede confirmar la version de MESA con el siguiente comando:
+Puede confirmar la versión de MESA con el siguiente comando:
 ```
 inxi -Gx
 ```
@@ -147,8 +227,7 @@ Y luego proceder con el comando:
 ```
 sudo intel_gpu_top
 ```
-Para desplegar toda la info del motor de vídeo o de renderizado 3D por ejemplo.
-
+Para desplegar toda la información del motor de vídeo o de renderizado 3D por ejemplo.
 
 Ahora procederemos con las instalación de Lutris. Un programa que nos ayudara a administrar nuestros juegos de múltiples plataformas. Para eso es necesario dirigirse al sitio web de las [descargas](https://lutris.net/downloads) e ir al apartado Debian. Una vez allí, proceder con los pasos de instalación indicados. Personalmente prefiero seleccionar el repo de openSUSE Build Service y hacerlo  manualmente. Luego abrir Lutris, esperar a que se instalen los recursos necesarios y con eso ya estará listo para su uso. 
 
@@ -162,22 +241,22 @@ Después procederá con la instalación de todos los componentes necesarios para
 
 ## Referencias: 
 
-https://linuxete.duckdns.org/repositorios-para-debian-12/
+[https://linuxete.duckdns.org/repositorios-para-debian-12/](https://linuxete.duckdns.org/repositorios-para-debian-12/)
 
-https://wiki.debian.org/SourcesList
+[https://wiki.debian.org/SourcesList](https://wiki.debian.org/SourcesList)
 
-https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/
+[https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/](https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/)
 
-https://github.com/lutris/docs/blob/master/InstallingDrivers.md
+[https://github.com/lutris/docs/blob/master/InstallingDrivers.md](https://github.com/lutris/docs/blob/master/InstallingDrivers.md)
 
-https://github.com/fkortsagin/Simple-Debian-Setup
+[https://github.com/fkortsagin/Simple-Debian-Setup](https://github.com/fkortsagin/Simple-Debian-Setup)
 
-https://wiki.debian.org/GraphicsCard
+[https://wiki.debian.org/GraphicsCard](https://wiki.debian.org/GraphicsCard)
 
-https://wiki.debian.org/NvidiaGraphicsDrivers
+[https://wiki.debian.org/NvidiaGraphicsDrivers](https://wiki.debian.org/NvidiaGraphicsDrivers)
 
-https://wiki.debian.org/AtiHowTo
+[https://wiki.debian.org/AtiHowTo](https://wiki.debian.org/AtiHowTo)
 
-https://wiki.debian.org/Steam
+[https://wiki.debian.org/Steam](https://wiki.debian.org/Steam)
 
-https://www.youtube.com/watch?v=LGPO6tTHbNw
+[https://www.youtube.com/watch?v=LGPO6tTHbNw](https://www.youtube.com/watch?v=LGPO6tTHbNw)
