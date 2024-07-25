@@ -142,7 +142,7 @@ sudo apt install gnome-disk-utility
 
 sudo apt install gparted
 
-sudo apt install lshw neofetch cpufetch cpu-x btop htop
+sudo apt install lshw hardinfo neofetch cpufetch cpu-x btop htop
 ```
 
 ## Programas backports recomendados
