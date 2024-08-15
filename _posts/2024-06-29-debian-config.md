@@ -132,13 +132,15 @@ sudo apt install ttf-mscorefonts-installer
 
 sudo apt install fonts-ubuntu
 
-sudo apt install galculator/gnome-calculator (son dos programas, el primero es mas ligero)
+sudo apt install gnome-calculator
 
 sudo apt install gnome-firmware
 
 sudo apt install gnome-software gnome-package-updater
 
 sudo apt install gnome-disk-utility 
+
+sudo apt install gnome-text-editor 
 
 sudo apt install gparted
 
