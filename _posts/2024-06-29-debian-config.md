@@ -55,7 +55,18 @@ sudo apt update && sudo apt upgrade
 Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repo *multimedia* complementa y mejora el soporte de audio y video para Debian gracias a algunas licencias y 
 al traer versiones más recientes de algunos programas. 
 
-## firmware-linux-nonfree
+
+## Asteriscos en la terminal 
+Para cuando necesite escribir la contraseña en la terminal me gustaría que aparecieran los asteriscos, para eso es necesario: 
+```
+sudo nano /etc/sudoers
+```
+En el apartado de `Defaults      env_reset` poner una coma después de esa variable y añadir `pwfeedback` quedando así: 
+```
+Defaults      env_reset,pwfeedback
+```
+
+## Firmware-linux-nonfree
 
 Es un paquete que contiene el firmware privativo para una buena cantidad de hardware. Altamente recomendado para su instalación:
 
@@ -124,13 +135,19 @@ Al momento de dar click en aceptar, nos pedira que presionemos una tecla para po
 Mis programas recomendados de momento son los siguientes. Recuerde que si tiene de escritorio a KDE o GNOME ya estan instalados algunos o sus correspondientes alternativas (para el caso de KDE):
 
 ```
+sudo apt install lshw inxi hardinfo neofetch cpufetch cpu-x btop htop
+
 sudo apt install vlc mpv
 
 sudo apt install gdebi
 
+sudo apt install arc theme blackbird-gtk-theme
+
 sudo apt install ttf-mscorefonts-installer
 
 sudo apt install fonts-ubuntu
+
+sudo apt install gparted
 
 sudo apt install gnome-calculator
 
@@ -141,10 +158,6 @@ sudo apt install gnome-software gnome-package-updater
 sudo apt install gnome-disk-utility 
 
 sudo apt install gnome-text-editor 
-
-sudo apt install gparted
-
-sudo apt install lshw hardinfo neofetch cpufetch cpu-x btop htop
 ```
 
 ## Programas backports recomendados
@@ -154,8 +167,10 @@ sudo apt install -t bookworm-backports <package>
 ```
 Siguiendo esta logica recomiendo los siguientes paquetes:
 ```
-sudo apt install -t bookworm-backports libreoffice papirus-icon-theme telegram-desktop 
+sudo apt install -t bookworm-backports libreoffice papirus-icon-theme telegram-desktop mesa-vulkan-drivers
 ```
+Aqui se incluye la pila grafica de MESA. Muy importante para equipos nuevos y poder aprovechar el hardware moderno. 
+
 Recuerde que también `pipewire` también es una excelente opción para su instalación. 
 
 # Configuración Kernel, MESA y gaming
@@ -179,26 +194,8 @@ Recuerde ver la guía de instalacion de los respectivos kernels además como com
 
 MESA es la pila gráfica de Linux. En otras palabras, son los drivers de vídeo para el sistema que vienen a nivel de kernel siendo esta una descripcion hecha de forma muy vaga. Debian nunca los actualiza de por si, salvo una vez cada nueva versión lanzada.
 En el caso de su 12 lanzamiento viene por defecto en la 22.3.6 la cual ya tiene un tiempo y es perfectamente funcional para jugar. Pero en el caso que desee aprovechar las mejoras de las nuevas versiones y el soporte para nuevo hardware. 
-Es necesario agregar un repositorio extra del tipo PPA (que es exclusivo de Ubuntu) a Debian. Para eso haremos lo siguiente:
-```
-sudo nano /etc/apt/sources.list.d/kisak-mesa.list
-```
-Dentro de ese archivo debemos agregar esta linea:
-```
-deb https://ppa.launchpadcontent.net/kisak/kisak-mesa/ubuntu jammy main
-```
-Añadiremos la key del repo:
-```
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys F63F0F2B90935439
-```
-Ahora reubicaremos la key:
-```
-sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
-```
-Actualizamos el sistema:
-```
-sudo apt update && sudo apt upgrade
-```
+Anteriormente era necesario agregar un repositorio extra del tipo [PPA](https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/) (que es exclusivo de Ubuntu) a Debian. Sin embargo, desde el mes de septiembre de 2024 tenemos ya disponible en los repos de backports una version actualizada de MESA. En el apartado de arriba podra encontrar como instalarlo. 
+
 Puede confirmar la versión de MESA con el siguiente comando:
 ```
 inxi -Gx
