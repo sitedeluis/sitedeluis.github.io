@@ -44,7 +44,7 @@ deb https://www.deb-multimedia.org bookworm main non-free
 Y continuamos a guardar los cambios. Podremos actualizar los repos, sin embargo, nos arrojará un error debido a la falta de la key para el repo multimedia.
 Para instalarla es necesario ir al siguiente [link](https://deb-multimedia.org/dists/stable/main/binary-amd64/package/deb-multimedia-keyring) y descargar el archivo **.deb**. Por consola tambien podremos realizar la instalación mediante un:
 ```
-sudo wget https://deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2016.8.1_all.deb
+sudo wget https://deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
 sudo dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
 ```
 Una vez finalizado un simple: 
@@ -141,7 +141,7 @@ sudo apt install vlc mpv
 
 sudo apt install gdebi
 
-sudo apt install arc theme blackbird-gtk-theme
+sudo apt install arc-theme blackbird-gtk-theme
 
 sudo apt install ttf-mscorefonts-installer
 
@@ -149,7 +149,7 @@ sudo apt install fonts-ubuntu
 
 sudo apt install gparted
 
-sudo apt install gnome-calculator
+sudo apt install galculator
 
 sudo apt install gnome-firmware
 
