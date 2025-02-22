@@ -8,10 +8,10 @@ comments: true
 
 Estas son las configuraciones básicas que aplico al momento de instalar Debian en cualquier máquina. A nivel general se trata
 de los repositorios backports y los añadidos `non-free` y `non-free-firmware` para mayor soporte de hardware. Adicionalmente, algunas cosas para 
-un mejor soporte de multimedia y juegos. En el primer apartado encontrara lo mas basico para una optima experiencia dentro del sistema gracias a la añadidura 
+un mejor soporte de multimedia y juegos. En el primer apartado encontrara lo mas básico para una optima experiencia dentro del sistema gracias a la añadidura 
 de algunos extras. Posteriormente encontrara la respectiva configuracion personalizada enfocada en el gaming. 
 
-# Configuracion general 
+# Configuración general 
 
 Primero, necesitamos configurar el archivo *sources.list* con el siguiente comando:
 ```
@@ -22,38 +22,45 @@ Una vez allí procedemos a añadir:
 
 ```
 #Repo oficial
-deb https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
-#deb-src https://ftp.debian.org/debian/ bookworm contrib main non-free non-free-firmware
+deb https://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
+#deb-src https://deb.debian.org/debian bookworm main contrib non-free non-free-firmware
 
 #Actualizaciones
-deb https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
-#deb-src https://ftp.debian.org/debian/ bookworm-updates contrib main non-free non-free-firmware
+deb https://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
+#deb-src https://deb.debian.org/debian bookworm-updates main contrib non-free non-free-firmware
 
 #Seguridad
-deb https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
-#deb-src https://security.debian.org/debian-security/ bookworm-security contrib main non-free non-free-firmware
+deb https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
+#deb-src https://security.debian.org/debian-security bookworm-security main contrib non-free non-free-firmware
 
 #Backports
-deb https://ftp.debian.org/debian/ bookworm-backports contrib main non-free non-free-firmware
-#deb-src https://ftp.debian.org/debian/ bookworm-backports contrib main non-free non-free-firmware
+deb https://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
+#deb-src https://deb.debian.org/debian bookworm-backports main contrib non-free non-free-firmware
+```
 
-#Multimedia
-deb https://www.deb-multimedia.org bookworm main non-free
+Para añadir el repositorio multimedia crearemos un repo.list en la dirección `cd /etc/apt/sources.list.d`:
+```
+sudo touch multimedia.list
+sudo nano multimedia.list
+```
+Una vez dentro añadir:
 
 ```
-Y continuamos a guardar los cambios. Podremos actualizar los repos, sin embargo, nos arrojará un error debido a la falta de la key para el repo multimedia.
+#Multimedia
+deb https://www.deb-multimedia.org bookworm main non-free
+```
+Y continuamos a guardar los cambios. Podremos actualizar los repositorios, sin embargo, nos arrojará un error debido a la falta de la key para el repositorio multimedia.
 Para instalarla es necesario ir al siguiente [link](https://deb-multimedia.org/dists/stable/main/binary-amd64/package/deb-multimedia-keyring) y descargar el archivo **.deb**. Por consola tambien podremos realizar la instalación mediante un:
 ```
 sudo wget https://deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
-sudo dpkg -i deb-multimedia-keyring_2016.8.1_all.deb
+sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb
 ```
 Una vez finalizado un simple: 
 
 ```
 sudo apt update && sudo apt upgrade
 ```
-Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repo *multimedia* complementa y mejora el soporte de audio y video para Debian gracias a algunas licencias y 
-al traer versiones más recientes de algunos programas. 
+Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repositorio *multimedia* complementa y mejora el soporte de audio y vídeo para Debian gracias a algunas licencias y al traer versiones más recientes de algunos programas. 
 
 
 ## Asteriscos en la terminal 
@@ -79,7 +86,7 @@ En el caso de tener una GPU de RADEON instalar:
 ```
 sudo apt install firmware-amd-graphics
 ```
-Muy util por cierto si tiene un hardware reciente de la compañia o si tiene problemas en algunos programas de edición como DavinciResolve.
+Muy útil por cierto si tiene un hardware reciente de la compañía o si tiene problemas en algunos programas de edición como DavinciResolve.
 
 Y si usted tiene una GPU **intel** le recomiendo adicionalmente que instale el siguiente paquete:
 
@@ -87,7 +94,7 @@ Y si usted tiene una GPU **intel** le recomiendo adicionalmente que instale el s
 sudo apt install intel-media-va-driver-non-free
 ```
 A grandes rasgos es una mejora en la decodificación/codificación de vídeo acelerada por hardware en varios puntos de entrada. La recomiendo en tanto es una version mas actualizada 
-de su contraparte llamada *intel-media-va-driver* y que segun el [GitHub](https://github.com/intel/media-driver?tab=readme-ov-file#components-and-features) parece que esa no incluye componenetes privativos mientras su variante non-free si.
+de su contraparte llamada *intel-media-va-driver* y que según el [GitHub](https://github.com/intel/media-driver?tab=readme-ov-file#components-and-features) parece que esa no incluye componenetes privativos mientras su variante non-free si.
 
 Hasta aquí son las configuraciones más básicas para una mejor experiencia en Debian. A continuación explicare los pasos para actualizar el kernel y la configuración para gaming.
 
