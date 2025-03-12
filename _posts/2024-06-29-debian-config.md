@@ -11,7 +11,11 @@ Estas son las configuraciones básicas que aplico al momento de instalar Debian 
 ## Añadir el usuario como root 
 Primero necesitamos acceder al archivo `sudoers`:
 ```
-sudo nano /etc/sudoers
+su
+```
+Luego ingresamos:
+```
+nano /etc/sudoers
 ```
 
 Buscamos el apartado:
@@ -31,7 +35,7 @@ Para cuando necesite escribir la contraseña en la terminal me gustaría que apa
 Defaults      env_reset,pwfeedback
 ```
 
-## Modificar repos debian 12
+## Modificar repositorios Debian 12
 Primero, necesitamos configurar el archivo *sources.list* con el siguiente comando:
 ```
 sudo nano /etc/apt/sources.list
@@ -269,6 +273,35 @@ xfce4-popup-whiskermenu
 ```
 Al momento de dar clic en aceptar, nos pedirá que presionemos una tecla para poder asignarla. Presione la tecla de inicio, Windows o Super.
 
+## Funcionalidad extra Nautilus
+
+Nautilus es el gestor de archivos por defecto en GNOME.En caso que en el menu de preferencias no le permita agregar el botón de "Abrir en terminal" y "Abrir como administrador". Puede añadirlo con:
+```
+sudo apt-get install nautilus-open-terminal
+```
+Y:
+```
+sudo apt install nautilus-admin
+```
+
+## Extensiones GNOME:
+
+Para instalarlas recuerde añadir a Firefox la extensión [GNOME Shell integration](https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/). Las extensiones recomendadas para GNOME son las siguientes:
+
+- [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
+
+- [OpenWeather](https://extensions.gnome.org/extension/750/openweather/)
+
+- [Blur my Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
+
+- [Quick Settings Tweaks](https://extensions.gnome.org/extension/5446/quick-settings-tweaker/)
+
+- [AppIndicator and KStatusNotifierItem Support ](https://extensions.gnome.org/extension/615/appindicator-support/)
+
+- [Gtk4 Desktop Icons NG (DING)](https://extensions.gnome.org/extension/5263/gtk4-desktop-icons-ng-ding/)
+
+- [Vitals](https://extensions.gnome.org/extension/1460/vitals/)
+
 ## Instalar programas extra
 Mis programas recomendados de momento son los siguientes. No esta demás recomendar encarecidamente la instalación de [Firefox Stable](https://support.mozilla.org/en-US/kb/install-firefox-linux#w_install-firefox-deb-package-for-debian-based-distributions-recommended). Recuerde que si tiene de escritorio a KDE o GNOME ya están instalados algunos o sus correspondientes alternativas:
 
@@ -338,10 +371,6 @@ Anteriormente era necesario agregar un repositorio extra del tipo [PPA](https://
 
 Puede confirmar la versión de MESA con el siguiente comando:
 ```
-sudo apt install inxi
-```
-Y luego:
-```
 inxi -Gx
 ```
 
@@ -382,7 +411,7 @@ Su instalación es muy simple, ir a su [sitio web](https://store.steampowered.co
 ```
 sudo dpkg -i steam_latest.deb
 ```
-Después procederá con la instalación de todos los componentes necesarios para la plataforma de Valve. Recuerde activar **SteamPlay** para todos los titulos y bajar el Proton mas reciente. Despues de eso ya estara listo para jugar.
+Después procederá con la instalación de todos los componentes necesarios para la plataforma de Valve. Recuerde activar **SteamPlay** para todos los titulos y bajar el Proton mas reciente. Despues de eso ya estará listo para jugar.
 
 
 ## Referencias: 
