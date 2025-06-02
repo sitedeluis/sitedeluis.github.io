@@ -12,7 +12,14 @@
             {% for nav in site.nav %}
             <a href="{{ nav.url }}">{{ nav.title }}</a>
             {% endfor %}
-            <a href="feed.xml">RSS</a>
+            <a href="{{ '/feed.xml' | relative_url }}" aria-label="Suscribirse por RSS">
+              <svg width="1.2em" height="1.2em" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">
+              <path d="M19 20.001C19 11.729 12.271 5 4 5v2c7.168 0 13 5.832 13 13.001h2z"/>
+              <path d="M12 20.001h2C14 14.486 9.514 10 4 10v2c4.411 0 8 3.589 8 8.001z"/>
+              <circle cx="6" cy="18" r="2"/>
+              /svg>
+              <span class="sr-only">Feed RSS</span>
+            </a>
           </nav>
         </h3>
       </header>
@@ -23,10 +30,10 @@
 
       <footer class="footer">
         <small>
-          &copy;
-          <time datetime="{{ site.time | date_to_xmlschema }}"
-            >{{ site.time | date: '%Y' }}</time
-          >. Todos los derechos reservados.
+        <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
+        <img alt="Licencia Creative Commons" style="border-width:0" src="https://licensebuttons.net/l/by-nc-sa/4.0/80x15.png">
+        </a><br>
+        Este contenido está bajo una <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">licencia Creative Commons BY-NC-SA 4.0</a>.
         </small>
       </footer>
     </div>

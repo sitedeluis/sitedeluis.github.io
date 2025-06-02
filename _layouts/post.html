@@ -4,7 +4,9 @@ layout: default
 
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
-  <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">{{ page.date | date_to_string }}</time>
+  <time datetime="{{ page.date | date_to_xmlschema }}" class="post-date">
+  {% include date-es.html date=page.date %}
+  </time>
   {{ content }}
 </article>
 
@@ -14,9 +16,12 @@ layout: default
   <ul class="related-posts">
     {% for post in site.related_posts limit:3 %}
       <li>
-        <a href="{{ site.baseurl }}{{ post.url }}">
-          {{ post.title }}
-          <small><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time></small>
+        <a href="{{ post.url }}">
+          <svg width="0.8em" height="0.8em" viewBox="0 0 24 24" fill="none" stroke="currentColor" style="display: inline-block; vertical-align: middle;">
+        <path d="M9 18l6-6-6-6"/>
+          </svg>
+            {{ post.title }}
+          <small>({% include date-es.html date=post.date %})</small>
         </a>
       </li>
     {% endfor %}

@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Home
+paginate: 2  # Muestra 2 posts completos por página
 ---
 
 <div class="posts">
@@ -12,7 +13,9 @@ title: Home
       </a>
     </h1>
 
-    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">{{ post.date | date_to_string }}</time>
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+      {% include date-es.html date=post.date %}  <!-- Fecha en español -->
+    </time>
 
     {{ post.content }}
   </article>
@@ -21,13 +24,14 @@ title: Home
 
 <div class="pagination">
   {% if paginator.next_page %}
-    <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">Anterior</a>
+    <a class="pagination-item older" href="{{ paginator.next_page_path | relative_url }}">Anteriores</a>
   {% else %}
-    <span class="pagination-item older">Anterior</span>
+    <span class="pagination-item older">Anteriores</span>
   {% endif %}
+
   {% if paginator.previous_page %}
-    <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: relative_url }}">Reciente</a>
+    <a class="pagination-item newer" href="{{ paginator.previous_page_path | relative_url }}">Recientes</a>
   {% else %}
-    <span class="pagination-item newer">Reciente</span>
+    <span class="pagination-item newer">Recientes</span>
   {% endif %}
 </div>
