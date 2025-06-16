@@ -5,7 +5,7 @@
   <body>
     <div class="container content">
       <header class="masthead">
-        <h3 class="masthead-title">
+        <h2 class="masthead-title">
           <a href="{{ site.baseurl }}/" title="Home">{{ site.title }}</a>
 
           <nav class="nav">
@@ -21,7 +21,7 @@
               <span class="sr-only">Feed RSS</span>
             </a>
           </nav>
-        </h3>
+        </h2>
       </header>
 
       <main>
@@ -63,5 +63,6 @@
       ga("send", "pageview");
     </script>
     {% endif %}
+    <script src="{{ '/assets/js/copy-code.js' | relative_url }}" defer></script>
   </body>
 </html>

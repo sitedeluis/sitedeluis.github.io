@@ -56,3 +56,74 @@ pre {
 .gist .markdown-body {
   padding: 15px !important;
 }
+
+/* Botón de copiar - Versión estática para Dark Poole */
+.code-copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  padding: 4px;
+  background: var(--copy-btn-static-bg) !important;       /* Fijo claro */
+  border: 1px solid var(--copy-btn-static-border) !important; /* Borde fijo */
+  border-radius: 4px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+
+  svg {
+    width: 14px;
+    height: 14px;
+    stroke: var(--copy-btn-static-icon) !important; /* Icono oscuro fijo */
+    stroke-width: 2;
+  }
+
+  &:hover {
+    background: var(--copy-btn-static-hover) !important; /* Hover claro */
+  }
+
+  &.copied {
+    background: var(--copy-btn-copied-bg) !important; /* Verde al copiar */
+    svg {
+      stroke: #1a531b !important; /* Check verde oscuro */
+    }
+  }
+}
+
+/* Mostrar solo al hover */
+.highlight:hover .code-copy-btn,
+.language-plaintext:hover .code-copy-btn {
+  opacity: 1;
+}
+
+
+/* Estilos para tablas - Dark Poole */
+table {
+  width: 100%;
+  margin: 2rem 0;
+  border-collapse: collapse;
+  border: 1px solid var(--border-color); /* Borde exterior */
+  background-color: var(--dark-poole-001); /* Fondo oscuro */
+  color: var(--dark-poole-002); /* Texto claro */
+}
+
+th, td {
+  padding: 0.75rem;
+  border: 1px solid var(--border-color); /* Bordes internos */
+  text-align: left;
+}
+
+th {
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo oscuro para headers */
+  font-weight: bold;
+}
+
+/* Opcional: Zebra striping para mejor legibilidad */
+tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02);
+}

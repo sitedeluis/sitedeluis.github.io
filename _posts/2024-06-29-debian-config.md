@@ -6,9 +6,9 @@ tags: Ensayo
 comments: true
 ---
 
-Estas son las configuraciones básicas que aplico al momento de instalar Debian en cualquier máquina. A nivel general se trata de los repositorios backports y los añadidos `non-free` y `non-free-firmware` para mayor soporte de hardware. Adicionalmente, algunas cosas para un mejor soporte de multimedia y juegos. En el primer apartado encontrara lo mas básico para una óptima experiencia dentro del sistema gracias a la añadidura de algunos extras. Posteriormente encontrara la respectiva configuración personalizada enfocada en el gaming. 
+Estas son las configuraciones básicas que aplico al momento de instalar Debian en cualquier máquina. A nivel general se trata de los repositorios backports y los añadidos `non-free` y `non-free-firmware` para mayor soporte de hardware. Adicionalmente, algunas cosas para un mejor soporte de multimedia y juegos. En el primer apartado encontrara lo mas básico para una óptima experiencia dentro del sistema gracias a la añadidura de algunos extras. Posteriormente encontrara la respectiva configuración personalizada enfocada en el gaming.
 
-## Añadir el usuario como root 
+## Añadir el usuario como root
 Primero necesitamos acceder al archivo `sudoers`:
 ```
 su
@@ -30,7 +30,7 @@ username ALL=(ALL:ALL) ALL
 
 ## Asteriscos en la terminal
 
-Para cuando necesite escribir la contraseña en la terminal me gustaría que aparecieran los asteriscos, para eso es necesario dentro del mismo documento en el apartado de `Defaults      env_reset` poner una coma después de esa variable y añadir `pwfeedback` quedando así: 
+Para cuando necesite escribir la contraseña en la terminal me gustaría que aparecieran los asteriscos, para eso es necesario dentro del mismo documento en el apartado de `Defaults      env_reset` poner una coma después de esa variable y añadir `pwfeedback` quedando así:
 ```
 Defaults      env_reset,pwfeedback
 ```
@@ -78,12 +78,12 @@ Para instalarla es necesario ir al siguiente [link](https://deb-multimedia.org/d
 sudo wget https://deb-multimedia.org/pool/main/d/deb-multimedia-keyring/deb-multimedia-keyring_2024.9.1_all.deb
 sudo dpkg -i deb-multimedia-keyring_2024.9.1_all.deb
 ```
-Una vez finalizado un simple: 
+Una vez finalizado un simple:
 
 ```
 sudo apt update && sudo apt upgrade
 ```
-Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repositorio *multimedia* complementa y mejora el soporte de audio y vídeo para Debian gracias a algunas licencias y al traer versiones más recientes de algunos programas. 
+Aplicará los cambios en el sistema teniendo ya las mejoras. No está demás añadir que el repositorio *multimedia* complementa y mejora el soporte de audio y vídeo para Debian gracias a algunas licencias y al traer versiones más recientes de algunos programas.
 
 ## Habilitar paquetería 32 bits
 
@@ -101,7 +101,7 @@ sudo apt install firmware-linux-nonfree
 ```
 ## Drivers GPU RADEON
 
-Como tal el paquete `mesa-va-drivers` en su version 22.3.6 ya tiene la aceleración gráfica para aplicaciones [3D](https://wiki.debian.org/Mesa) y juegos tanto para intel como para AMD, así como el soporte de la decodificación y codificación de [hardware](https://wiki.debian.org/HardwareVideoAcceleration) para el caso exclusivo de GPUs de AMD Radeon. Por eso no es necesario instalar en principio nada mas salvo que requiera de aplicaciones especificas como DavinciResolve o la necesidad de usar ROCm e incluso algún soporte de GPU nueva. Para ello instalar el siguiente paquete: 
+Como tal el paquete `mesa-va-drivers` en su version 22.3.6 ya tiene la aceleración gráfica para aplicaciones [3D](https://wiki.debian.org/Mesa) y juegos tanto para intel como para AMD, así como el soporte de la decodificación y codificación de [hardware](https://wiki.debian.org/HardwareVideoAcceleration) para el caso exclusivo de GPUs de AMD Radeon. Por eso no es necesario instalar en principio nada mas salvo que requiera de aplicaciones especificas como DavinciResolve o la necesidad de usar ROCm e incluso algún soporte de GPU nueva. Para ello instalar el siguiente paquete:
 ```
 sudo apt install firmware-amd-graphics
 ```
@@ -119,7 +119,7 @@ Si usted tiene una GPU **intel** primero debe identificar la generación de su i
 ```
 sudo apt install intel-gpu-tools
 ```
-Y luego ejecute: 
+Y luego ejecute:
 ```
 sudo intel_gpu_top
 ```
@@ -134,7 +134,7 @@ A partir de Gen8 o mas instale el paquete:
 ```
 sudo apt install intel-media-va-driver-non-free
 ```
-El soporte de i965 como tal ya finalizo y ahora Intel se centra en el `media-va-driver`. Por eso recomiendo esta ultima ante todo pese a que con i965 tiene soporte hasta las iGPUs de octava, novena y décima generación. En caso de no tener la codificación y la decodificación instalarlo, de lo contrario mantener el ultimo. 
+El soporte de i965 como tal ya finalizo y ahora Intel se centra en el `media-va-driver`. Por eso recomiendo esta ultima ante todo pese a que con i965 tiene soporte hasta las iGPUs de octava, novena y décima generación. En caso de no tener la codificación y la decodificación instalarlo, de lo contrario mantener el ultimo.
 
 Lo que hace a grandes rasgos en ambos paquetes es que habilita la decodificación/codificación de vídeo acelerada por hardware en varios puntos de entrada. La recomiendo en tanto es una versión mas actualizada  de su contraparte llamada *intel-media-va-driver* y que según el [GitHub](https://github.com/intel/media-driver?tab=readme-ov-file#components-and-features) parece que esa no incluye componentes privativos mientras su variante non-free si.
 
@@ -196,34 +196,34 @@ vainfo
 Donde nos deberá devolver información sobre la decodificación y codificación acelerada por hardware de su equipo:
 ```
 libva info: VA-API version 1.17.0
-libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so
+libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/radeonsi_drv_video.so
 libva info: Found init function __vaDriverInit_1_17
-libva error: /usr/lib/x86_64-linux-gnu/dri/iHD_drv_video.so init failed
-libva info: va_openDriver() returns 1
-libva info: Trying to open /usr/lib/x86_64-linux-gnu/dri/i965_drv_video.so
-libva info: Found init function __vaDriverInit_1_8
 libva info: va_openDriver() returns 0
 vainfo: VA-API version: 1.17 (libva 2.12.0)
-vainfo: Driver version: Intel i965 driver for Intel(R) Bay Trail - 2.4.1
+vainfo: Driver version: Mesa Gallium driver 25.0.4-1~bpo12+1 for AMD Radeon RX 6600 (radeonsi, navi23, LLVM 15.0.6, DRM 3.61, 6.12.27+bpo-amd64)
 vainfo: Supported profile and entrypoints
       VAProfileMPEG2Simple            : VAEntrypointVLD
-      VAProfileMPEG2Simple            : VAEntrypointEncSlice
       VAProfileMPEG2Main              : VAEntrypointVLD
-      VAProfileMPEG2Main              : VAEntrypointEncSlice
+      VAProfileVC1Simple              : VAEntrypointVLD
+      VAProfileVC1Main                : VAEntrypointVLD
+      VAProfileVC1Advanced            : VAEntrypointVLD
       VAProfileH264ConstrainedBaseline: VAEntrypointVLD
       VAProfileH264ConstrainedBaseline: VAEntrypointEncSlice
       VAProfileH264Main               : VAEntrypointVLD
       VAProfileH264Main               : VAEntrypointEncSlice
       VAProfileH264High               : VAEntrypointVLD
       VAProfileH264High               : VAEntrypointEncSlice
-      VAProfileH264StereoHigh         : VAEntrypointVLD
-      VAProfileVC1Simple              : VAEntrypointVLD
-      VAProfileVC1Main                : VAEntrypointVLD
-      VAProfileVC1Advanced            : VAEntrypointVLD
-      VAProfileNone                   : VAEntrypointVideoProc
+      VAProfileHEVCMain               : VAEntrypointVLD
+      VAProfileHEVCMain               : VAEntrypointEncSlice
+      VAProfileHEVCMain10             : VAEntrypointVLD
+      VAProfileHEVCMain10             : VAEntrypointEncSlice
       VAProfileJPEGBaseline           : VAEntrypointVLD
+      VAProfileVP9Profile0            : VAEntrypointVLD
+      VAProfileVP9Profile2            : VAEntrypointVLD
+      VAProfileAV1Profile0            : VAEntrypointVLD
+      VAProfileNone                   : VAEntrypointVideoProc
 ```
-Como puede ver en mi caso, para este viejo Intel Celeron N2830 ofrece codificación y codificación de MPEG2, H264 en dos perfiles y VC-1. Lo que es conforme a las especificaciones de hardware. Aquí puede encontrar una lista con todas las GPUs en general y su soporte de codecs:
+Como puede ver en mi caso, esta Radeon RX 6600 ofrece codificación y codificación de MPEG2, H.264, H.265, VP9, VC-1 y el moderno AV1. Lo que es conforme a las especificaciones de hardware. Aquí puede encontrar una lista con todas las GPUs en general y su soporte de codecs:
 
 - [Intel](https://en.wikipedia.org/wiki/Intel_Graphics_Technology#) donde tambien tendriamos [Quick Sync](https://en.wikipedia.org/wiki/Intel_Quick_Sync_Video).
 
@@ -248,7 +248,7 @@ Ahora aparecerá nuestro usuario al inicio. En caso de necesitar mas configuraci
 sudo apt install lightdm-gtk-greeter-settings
 ```
 
-Para cambiar la resolucion del grub de inicio hay que buscar el archivo: 
+Para cambiar la resolucion del grub de inicio hay que buscar el archivo:
 ```
 sudo nano /etc/default/grub
 ```
@@ -261,7 +261,7 @@ También podemos quitar el plymouth buscando la linea:
 ```
 GRUB_CMDLINE_LINUX_DEFAULT=""
 ```
-Y dejarlo solo con comillas. 
+Y dejarlo solo con comillas.
 
 
 ## Tecla de inicio XFCE
@@ -328,9 +328,9 @@ sudo apt install gnome-firmware
 
 sudo apt install gnome-software gnome-package-updater
 
-sudo apt install gnome-disk-utility 
+sudo apt install gnome-disk-utility
 
-sudo apt install gnome-text-editor 
+sudo apt install gnome-text-editor
 ```
 
 ## Programas backports recomendados
@@ -342,13 +342,13 @@ Siguiendo esta lógica recomiendo los siguientes paquetes:
 ```
 sudo apt install -t bookworm-backports libreoffice papirus-icon-theme telegram-desktop mesa-vulkan-drivers pipewire
 ```
-Aquí se incluye la pila gráfica de MESA. Muy importante para equipos nuevos y poder aprovechar el hardware moderno así como de optimizaciones generales. 
+Aquí se incluye la pila gráfica de MESA. Muy importante para equipos nuevos y poder aprovechar el hardware moderno así como de optimizaciones generales.
 
-Recuerde que también `pipewire` también es una excelente opción para su instalación en todo el tema del sonido, por defecto se usa en GNOME. 
+Recuerde que también `pipewire` también es una excelente opción para su instalación en todo el tema del sonido, por defecto se usa en GNOME.
 
 ## Configuración Kernel, MESA y gaming
- 
-Para esta parte, es necesario recalcar que Debian por si mismo no ofrece el mas actualizado soporte de hardware en su versión estable. En otras variantes si, pero no es el caso. 
+
+Para esta parte, es necesario recalcar que Debian por si mismo no ofrece el mas actualizado soporte de hardware en su versión estable. En otras variantes si, pero no es el caso.
 Nosotros manualmente podemos modificar esto. Para el caso del kernel se plantean dos caminos a seguir que explico a continuación.
 
 ## Kernel
@@ -356,10 +356,10 @@ En primer lugar y como la opción mas sencilla y fácil que existe, es actualiza
 Esto se puede realizar desde el **gestor de paquetes synaptic** y buscando el siguiente termino: **linux-image**. Despues, dentro de la inmensa cantidad de resultados que apareceran
 nosotros tenemos que escoger la versión mas actualizada. Para la fecha de escritura de este articulo me topo con la version **linux-image-6.7.12+bpo-amd64**. Recuerde que la versión a instalar
 en su pc es la que tenga dentro de su descripción **Linux X.X for 64-bit PCs**. Después proceda a marcar para instalar, espere unos momentos y reinicie su PC. Después de eso ya tendrá su Kernel actualizado.
- 
+
 ![kernel]({{site.baseurl}}/assets/images/kernel67.png)
 
-Como segunda opción esta la de usar los Customs Kernels. Vienen mucho mas actualizados en comparación al del repositorio de Debian y obtienen configuraciones especiales para jugar. 
+Como segunda opción esta la de usar los Customs Kernels. Vienen mucho mas actualizados en comparación al del repositorio de Debian y obtienen configuraciones especiales para jugar.
 Yo recomiendo tanto [XanMod](https://xanmod.org/) como [Liquorix](https://liquorix.net/).
 Recuerde ver la guía de instalación de los respectivos kernels además como comparativas de acuerdo a su necesidad. Aquí solo son mencionados como alternativas.
 
@@ -367,7 +367,7 @@ Recuerde ver la guía de instalación de los respectivos kernels además como co
 
 MESA es la pila gráfica de Linux. En otras palabras, son los drivers de vídeo para el sistema que vienen a nivel de kernel siendo esta una descripción hecha de forma muy vaga. Debian nunca los actualiza de por si, salvo una vez cada nueva versión lanzada.
 En el caso de su 12 lanzamiento viene por defecto en la 22.3.6 la cual ya tiene un tiempo y es perfectamente funcional para jugar. Pero en el caso que desee aprovechar las mejoras de las nuevas versiones y el soporte para nuevo hardware puede ser algo limitante.
-Anteriormente era necesario agregar un repositorio extra del tipo [PPA](https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/) (que es exclusivo de Ubuntu) a Debian. Sin embargo, desde el mes de septiembre de 2024 tenemos ya disponible en los repos de backports una version actualizada de MESA. En el apartado de arriba podrá encontrar como instalarlo. 
+Anteriormente era necesario agregar un repositorio extra del tipo [PPA](https://salmorejogeek.com/2023/06/23/como-tener-la-ultima-version-de-mesa-en-debian-12-bookworm-rama-estable/) (que es exclusivo de Ubuntu) a Debian. Sin embargo, desde el mes de septiembre de 2024 tenemos ya disponible en los repos de backports una version actualizada de MESA. En el apartado de arriba podrá encontrar como instalarlo.
 
 Puede confirmar la versión de MESA con el siguiente comando:
 ```
@@ -375,7 +375,7 @@ inxi -Gx
 ```
 
 ## Gaming
-Para gaming es necesario activar el soporte de 32bits para algunos paquetes esenciales tanto de Steam como de otros programas y juegos. Adicionalmente instalar los paquetes de vídeo de 32bits que por defecto no vienen instalados. 
+Para gaming es necesario activar el soporte de 32bits para algunos paquetes esenciales tanto de Steam como de otros programas y juegos. Adicionalmente instalar los paquetes de vídeo de 32bits que por defecto no vienen instalados.
 
 ```
 sudo dpkg --add-architecture i386 && sudo apt update && sudo apt upgrade && sudo apt install libgl1-mesa-dri:i386 mesa-vulkan-drivers mesa-vulkan-drivers:i386
@@ -386,7 +386,7 @@ Mangohud por su parte es el programa que te mostrara los FPS, temperatura del ha
 ```
 sudo apt install goverlay mangohud gamemode
 ```
-Recuerda entonces abrir el programa **Goverlay** y activar antes que nada el "Global Enable". Luego configura de acuerdo a los parámetros que necesites monitorizar. 
+Recuerda entonces abrir el programa **Goverlay** y activar antes que nada el "Global Enable". Luego configura de acuerdo a los parámetros que necesites monitorizar.
 
 Ahora procederemos con las instalación de Lutris. Un programa que nos ayudara a administrar nuestros juegos de múltiples plataformas. Para eso es necesario dirigirse al sitio web de las [descargas](https://lutris.net/downloads) e ir al apartado Debian. Una vez allí, proceder con los pasos de instalación indicados. Personalmente prefiero seleccionar el repo de openSUSE Build Service y hacerlo  manualmente de la siguiente forma:
 ```
@@ -402,11 +402,11 @@ sudo apt update
 ```
 E instalamos manualmente:
 ```
-sudo apt install lutris 
+sudo apt install lutris
 ```
-Luego abrir Lutris, esperar a que se instalen los recursos necesarios y con eso ya estará listo para su uso. Esta versión es mas actual que la de los repos de Debian. 
+Luego abrir Lutris, esperar a que se instalen los recursos necesarios y con eso ya estará listo para su uso. Esta versión es mas actual que la de los repos de Debian.
 
-Importante y de vital importancia es instalar Steam. La plataforma predilecta para jugar y que también esta muy comprometido con el desarrollo del gaming en linux. 
+Importante y de vital importancia es instalar Steam. La plataforma predilecta para jugar y que también esta muy comprometido con el desarrollo del gaming en linux.
 Su instalación es muy simple, ir a su [sitio web](https://store.steampowered.com/about/) y descargar ese archivo. Instalarlo de manera gráfica o con un simple:
 ```
 sudo dpkg -i steam_latest.deb
@@ -414,7 +414,7 @@ sudo dpkg -i steam_latest.deb
 Después procederá con la instalación de todos los componentes necesarios para la plataforma de Valve. Recuerde activar **SteamPlay** para todos los titulos y bajar el Proton mas reciente. Despues de eso ya estará listo para jugar.
 
 
-## Referencias: 
+## Referencias:
 
 [https://linuxete.duckdns.org/repositorios-para-debian-12/](https://linuxete.duckdns.org/repositorios-para-debian-12/)
 
@@ -432,7 +432,7 @@ Después procederá con la instalación de todos los componentes necesarios para
 
 [https://wiki.debian.org/AtiHowTo](https://wiki.debian.org/AtiHowTo)
 
-[https://www.x.org/wiki/RadeonFeature/](https://www.x.org/wiki/RadeonFeature/ ) 
+[https://www.x.org/wiki/RadeonFeature/](https://www.x.org/wiki/RadeonFeature/ )
 
 [https://wiki.debian.org/HardwareVideoAcceleration](https://wiki.debian.org/HardwareVideoAcceleration)
 

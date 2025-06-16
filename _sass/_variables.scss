@@ -82,3 +82,12 @@
   --border-color: rgba(255, 255, 255, 0.15);
   --code-bg: var(--gray-900);
 }
+
+/* Añade solo estas variables específicas para el botón */
+:root, [data-theme="dark-poole"] {
+  --copy-btn-static-bg: #d9d9d9;       /* Gris claro estático */
+  --copy-btn-static-border: #b3b3b3;   /* Borde gris medio */
+  --copy-btn-static-icon: #333333;     /* Icono oscuro */
+  --copy-btn-static-hover: #f0f0f0;    /* Gris muy claro al hover */
+  --copy-btn-copied-bg: #a6d8a6;       /* Verde claro al copiar */
+}
