@@ -13,6 +13,7 @@ Lo publico aquí porque creo que tiene algo de potencial, a continuación el tex
 Luis José
 
 Seminario: Giro hermenéutico y fenomenológico de las ciencias humanas
+
 Fecha: 12 de abril del 2023
 
 # **Mentira y sociedad: una breve mirada acerca de “Sobre verdad y mentira en sentido extramoral”**
