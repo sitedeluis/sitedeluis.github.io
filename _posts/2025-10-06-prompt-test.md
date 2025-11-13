@@ -28,7 +28,7 @@ Teniendo en cuenta eso, de momento el primer punto lo dedicare a cuestiones que 
 <br>
 
 # Tabla de Contenido
-- ## [1. Prueba de escritura, diseño y creatividad](#p1)
+- [1. Prueba de escritura, diseño y creatividad](#p1)
 - [2. Razonamiento Lógico y Solución de Problemas](#p2)
 <br>
 <br>
@@ -36,7 +36,7 @@ Teniendo en cuenta eso, de momento el primer punto lo dedicare a cuestiones que 
 
 
 
-## 1. Prueba de escritura, diseño y creatividad
+## <a id="p1"></a>1. Prueba de escritura, diseño y creatividad
 
 <div style="text-align: center;">
     <img
@@ -114,7 +114,7 @@ Elabora una guía de configuración inicial post-instalación para un servidor D
 <br>
 <br>
 
-## 2. Razonamiento Lógico y Solución de Problemas {id="p2"}
+## <a id="p2"></a>2. Razonamiento Lógico y Solución de Problemas
 <div style="text-align: center;">
     <img
         src="{{ "/assets/images/llm-local-meme_3.jpg" | relative_url }}"

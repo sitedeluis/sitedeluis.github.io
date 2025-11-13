@@ -38,11 +38,16 @@ Lo que empezó como un intento de hacer una simple guía referencial de Raspberr
 - [Servidor Web](#servidor-web)
 - [Servidor Torrent/Seedbox](servidor-torrentseedbox)
 - [Servidor de impresión](#servidor-de-impresión)
+- [Servidor de Gitea](#servidor-de-gitea)
+- [Juegos en repositorios](#juegos-en-repositorios)
+- [Sistema de vigilancia](#sistema-de-vigilancia)
+- [Bot de notificaciones](#bot-de-notificaciones)
+- [Servidor de Mensajería Instantánea Matrix](#servidor-de-mensajería-instantánea-matrix)
+- [Nodo IPFS](#sistema-de-vigilancia)
 - [Proyectos Raspberry Pi](#proyectos-raspberry-pi)
 <br>
 <br>
 <br>
-
 
 
 ## Server de minecraft (Java Edition)
@@ -456,6 +461,280 @@ Convierte impresoras USB antiguas o no compatibles con red en dispositivos compa
 
 - <a href="https://www.youtube.com/watch?v=8CG1nrrsY2w" target="_blank">Guía #1</a> videooooo.
 - <a href="https://tripad.medium.com/turning-my-old-printer-into-a-wireless-printer-with-a-raspberry-pi-1fb6d73e35a4" target="_blank">Guía #2</a> videooooo.
+<br>
+<br>
+
+## Servidor de Gitea
+
+<div style="text-align: center;">
+    <img
+        src="{{ "/assets/images/gitea.jpg" | relative_url }}"
+        alt="Texto alternativo de la imagen"
+        style="
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        "
+    />
+</div>
+
+
+Convierte tu Raspberry Pi en tu propia plataforma de desarrollo y colaboración, alojando repositorios Git privados o públicos. Al autoalojar un servidor Git como Gitea, obtienes control total sobre tu código fuente, evitas las restricciones de las cuentas gratuitas de servicios públicos (como la limitación de repositorios privados) y aseguras la soberanía de tus datos sin depender de terceros.
+
+Esta es la forma más sencilla, rápida y eficiente de tener una forja de código Git funcional en la Raspberry Pi, ideal para proyectos personales, equipos pequeños o para aprender sobre la gestión de control de versiones.
+Aqui estan los tutoriales recomendados:
+- <a href="https://docs.gitea.com/installation/install-from-binary" target="_blank">Documentacion oficial</a>.
+- <a href="https://hackernoon.com/lang/es/una-guia-sobre-como-alojar-su-propio-servidor-git-con-raspberry-pi" target="_blank">Guía #1</a>.
+- <a href="https://medium.com/@kevalpatel2106/create-your-own-git-server-using-raspberry-pi-and-gitlab-f64475901a66" target="_blank">Guía #2</a>.
+- <a href="https://linuxize.com/post/how-to-install-git-on-raspberry-pi/" target="_blank">Guía #3</a>.
+<br>
+<br>
+
+## Juegos en repositorios:
+
+Mi recomendacion para esto (que es igual de valido en cualquier sistema debian) es usar este comando:
+```
+apt search game | less
+```
+con esto ya te mostrara en terminal todos los juegos, librerias y demas programas relacionados con los "games". Tambien puedes usar:
+```
+apt search game > juegos_completos.txt
+```
+para que todo lo que te salia en terminal ahora este en un archivo .txt mas leible. De aqui sacare mis recomendaciones (hasta la fecha con debian 12 bookworm) con su nombre de paquete para que lo instales:
+
+|Genero|Juego|Descripcion|
+| ------------- | ------------- |
+|Estrategia/RTS|0ad|Juego de estrategia en tiempo real de guerra en la antigüedad.|
+||7kaa|Seven Kingdoms Ancient Adversaries: juego de estrategia en tiempo real.|
+||asc|Juego de estrategia por turnos (Advanced Strategic Command).|
+||freeciv|Juego de estrategia por turnos basado en Civilization.|
+||gigalomania|Juego estilo "god game" tipo Mega-Lo-Mania.|
+||glob2|Juego de estrategia en tiempo real innovador.|
+||iagno|Popular juego Othello (Reversi) para GNOME.|
+||glob2|Juego de estrategia en tiempo real innovador.|
+||jester|Juego de mesa similar a Othello.|
+||kfourinline|Juego Conecta Cuatro (Connect Four) para KDE.|
+||kigo|Juego Go (Igo, Baduk) para KDE.|
+||ironseed|Juego de estrategia/aventura de exploración de ciencia ficción en el espacio.|
+||lgeneral|Juego de estrategia por turnos al estilo Panzer General.|
+||wesnoth|The Battle for Wesnoth: Juego de fantasía de estrategia por turnos, un proyecto open source masivo con varias campañas.|
+||warzone2100|Juego de estrategia en tiempo real (RTS) en 3D. Los jugadores diseñan sus propias unidades.|
+||widelands|Juego de estrategia en tiempo real de fantasía (inspirado en The Settlers).|
+||warmux|Juego de artillería por turnos en 2D (similar a Worms).|
+|RPG/Roguelike|cataclysm-dda-curses|Roguelike post-apocalíptico (interfaz ncurses).|
+||crawl|Dungeon Crawl, un juego roguelike basado en texto.|
+||angband|Juego de simulación de mazmorras basado en texto.|
+||freedroidrpg|RPG isométrico influenciado por Paradroid.|
+||adonthell|Juego de rol gráfico 2D.|
+||hyperrogue|Juego roguelike gráfico no euclidiano único.|
+||uqm|The Ur-Quan Masters (un juego de aventura intergaláctica).|
+||tome|Roguelike de mazmorras basado en texto.|
+||zangband|Juego Roguelike basado en texto de un solo jugador.|
+|Shooters/FPS|alien-arena|Shooter 3D en primera persona online.|
+||bzflag-client|Juego de batallas de tanques 3D en primera persona.|
+||chocolate-doom|Motor de Doom compatible con Vanilla Doom.|
+||crispy-doom|Doom engine de media resolución (basado en Chocolate Doom).|
+||doomsday|Versión mejorada del juego Doom legendario.|
+||armagetronad|Juego 3D de alta velocidad, tipo Tron.|
+||geki2 / geki3|Juegos de disparos verticales y horizontales, respectivamente (tipo shoot 'em up).|
+||gunroar|Juego de disparos en lancha cañonera de 360 grados.|
+||kobodeluxe|Juego de batalla espacial.|
+||openarena|Shooter en primera persona 3D de ritmo rápido (similar a Quake III Arena).|
+||nexuiz|Shooter en primera persona 3D de ritmo rápido (versión clásica).|
+||quake/quake2/quake3|Lanzadores y servidores para los clásicos Quake I, II y III.|
+||yamagi-quake2|Versión mejorada del cliente del clásico Quake II.|
+||wolf4sdl|Port basado en SDL de Wolfenstein 3-D y Spear of Destiny.|
+||redeclipse|Shooter 3D en primera persona (casual arena shooter).|
+||sauerbraten|Shooter 3D en primera persona (Cube 2 Engine).|
+||ufoai|UFO: Alien Invasion (estrategia y táctica por turnos, tipo X-COM).|
+|Carreras|supertuxkart|Carreras arcade en 3D con personajes y pistas variadas (estilo Mario Kart).|
+||torcs|Simulador de coches de carreras 3D basado en OpenGL.|
+||trigger-rally|Juego de carreras de rally 3D.|
+|Arcade/Plataformas|chromium-bsu|Shooter espacial de desplazamiento rápido.|
+||supertux|Clásico sidescroller 2D con Tux (estilo Mario).|
+||caveexpress|Plataformero 2D con jugabilidad basada en física.|
+||frogatto|Plataformero 2D protagonizado por una rana.|
+||amphetamine|Juego de «correr y saltar» con efectos visuales.|
+||gnujump|Juego de plataformas donde debes saltar hacia arriba para sobrevivir.|
+||hannah|Juego parecido a Pac-Man, orientado a niños.|
+||holotz-castle|Juego de plataformas con dosis de misterio.|
+||hedgewars|Juego de artillería por turnos divertido, con erizos luchadores (similar a Worms).|
+||kollision|Juego simple de esquivar bolas.|
+||kspaceduel|Juego arcade SpaceWar! (duelo espacial).|
+||ksirk|Juego de estrategia Risk.|
+||lbreakout2 / lbreakouthd|Juego de bola y paleta (Breakout) con buenos gráficos.|
+||kraptor|Juego clásico de disparos con desplazamiento (shoot 'em up).|
+||lierolibre|Juego de acción de lombrices (earthworm action game).|
+||liquidwar|Juego de guerra multijugador original.|
+||maelstrom|Juego estilo arcade parecido a Asteroids.|
+||mrboom|Clon de Bomberman para 8 jugadores.|
+||open-invaders|Clon de Space Invaders.|
+||pacman4console|Juego Pac-Man basado en ncurses (terminal).|
+||penguin-command|Clon del juego Missile Command.|
+||lugaru|Juego de lucha de conejos ninja en tercera persona (Lugaru HD).|
+||naev|Juego espacial 2D de acción/RPG.|
+||pekka-kana-2|Juego de plataformas 2D de la vieja escuela.|
+||xblast-tnt|Clon multijugador de Dynablaster/Bomberman.|
+||xmoto|Juego de plataformas de motocross en 2D basado en física.|
+||xgalaga|Versión para X del famoso juego Galaga.|
+||xscavenger|Juego de plataformas estilo Lode Runner para X.|
+||xscorch|Clon del juego de tanques Scorched Earth.|
+||vitetris|Clon de Tetris para terminal virtual.|
+|Puzles/Mesa|2048 / 2048-qt|Juego de rompecabezas de deslizar y sumar.|
+||blockattack|Juego de puzle inspirado en Tetris.|
+||briquolo|Juego Breakout 3D de ritmo rápido.|
+||chroma|Juego de puzle abstracto (versión gráfica).|
+||four-in-a-row|Juego Cuatro en Línea para GNOME.|
+||gnome-2048|Puzle de deslizar y sumar.|
+||gnome-mines|Versión del popular Buscaminas para GNOME.|
+||gnome-sudoku|Juego de Sudoku para GNOME.|
+||gnome-mahjongg|Juego de fichas Mahjong.|
+||hex-a-hop|Juego de puzle basado en fichas hexagonales.|
+||gweled|Juego de puzle estilo "Diamond Mine" (estilo match-3).|
+||gnubg|Programa de Backgammon (tablas o consola) con análisis.|
+||kapman|Clon del juego Pac-Man para KDE.|
+||kbreakout|Juego de bola y paleta (Breakout) para KDE.|
+||kmahjongg|Juego de Mahjong solitario para KDE.|
+||kmines|Juego Buscaminas (Minesweeper) para KDE.|
+||kjumpingcube|Juego táctico simple (KDE).|
+||klickety|Juego de puzle SameGame (KDE).|
+||kgoldrunner|Juego arcade Lode Runner (KDE).|
+||kolf|Juego de minigolf en miniatura.|
+||kpat|Colección de juegos de solitario (cartas).|
+||kreversi|Juego de mesa Reversi (Othello).|
+||kshisen|Juego de solitario Shisen-Sho (similar al Mahjong).|
+||ksudoku|Puzle de Sudoku y solucionador.|
+||kubrick|Juego basado en el Cubo de Rubik.|
+||xwelltris|Juego popular similar a Welltris (Tetris 3D).|
+|Simulación/Emulación|dosbox|Emulador x86 con gráficos, sonido y DOS. (Útil para correr juegos antiguos de DOS).|
+||atari800|Emulador de Atari de 8 bits para SDL.|
+||dolphin-emu|Emulador de Gamecube y Wii.|
+||fceux|Emulador NES/Famicom todo en uno.|
+||hatari|Emulador para computadoras Atari ST, STE, TT y Falcon.|
+||gnuboy-sdl|Binarios SDL para el emulador de Game Boy.|
+||gbsplay|Reproductor de sonido de Gameboy.|
+||lincity-ng|Juego de simulación de ciudades con gráficos avanzados (similar a SimCity).|
+||lincity|Versión clásica de la simulación de ciudades.|
+||micropolis|Simulador de gestión de ciudades en tiempo real (basado en el código fuente de SimCity Classic).|
+||openttd|Reimplementación open source de Transport Tycoon Deluxe con mejoras.|
+||opencity|Juego de simulación de ciudades en 3D.|
+||mame|Multiple Arcade Machine Emulator (MAME).|
+||mednafen|Emulador multiplataforma (incluye NES, GB/A, Lynx, PC Engine).|
+||mgba-qt / mgba-sdl|Frontends (Qt y SDL) para el emulador de Game Boy Advance (mGBA).|
+||nestopia|Emulador de Nintendo Entertainment System/Famicom.|
+||openrct2|Reimplementación open source de RollerCoaster Tycoon 2.|
+||osmose-emulator|Emulador de Sega Master System y Game Gear.|
+||pcsxr|Emulador de Sony PlayStation.|
+||stella|Emulador de Atari 2600.|
+||yabause-gtk/yabause-qt|Emulador de la consola Sega Saturn.|
+||virtualjaguar|Emulador cross-platform de la consola Atari Jaguar.|
+||visualboyadvance|Emulador de Game Boy Advance con todas las funciones.|
+||wit|De wii/gamecube, herramienta para manipular imágenes ISO y contenedores WBFS.|
+|Juegos Sandbox/Construcción|gemrb|Motor open-source para ejecutar juegos como Baldur's Gate, Icewind Dale y Planescape: Torment (Necesitas los archivos originales del juego).|
+|RPG/Motores|minetest|Motor de juego sandbox de bloques multijugador y mundo infinito (similar a Minecraft).|
+||gearhead / gearhead-sdl|Juego RPG roguelike de mechas, en versión consola y SDL.|
+||lambdahack|Motor de juego roguelike ASCII táctico de exploración de mazmorras.|
+||ioquake3|Motor de juego para shooters en primera persona 3D (basado en Quake 3 Arena).|
+||jzip|Intérprete para aventuras de texto Z-Code (formato clásico de Infocom).|
+||instead|Motor para juegos de aventuras de texto simples y novelas visuales.|
+||love|LÖVE: Framework de desarrollo de juegos 2D basado en Lua y OpenGL.|
+||openmw|Motor open source del juego RPG de mundo abierto The Elder Scrolls III: Morrowind (necesitas los archivos del juego original).|
+||lure-of-the-temptress|Aventura de fantasía clásica point and click (de los creadores de Broken Sword).|
+||openjazz|Reimplementación del motor de Jazz Jackrabbit (shooter de plataformas DOS).|
+||rtcw|Motor de juego para Return to Castle Wolfenstein.|
+||scummvm|Motor para jugar varias aventuras gráficas (como las de LucasArts).|
+||vcmi|Reescritura del motor de juego Heroes of Might and Magic 3.|
+||renpy|framework estándar para crear novelas visuales.|
+
+
+<br>
+<br>
+
+## Sistema de vigilancia
+<div style="text-align: center;">
+    <img
+        src="{{ "/assets/images/vigilar.jpg" | relative_url }}"
+        alt="Texto alternativo de la imagen"
+        style="
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto;
+            max-width: 64%;
+            height: auto;
+        "
+    />
+</div>
+<br>
+
+No es que lea fuertemente a foucalt y tampoco cuestione las estructuras del poder de forma vehemente, auque tecnicamente este mintiendo, pero de todas formas, aqui hay un par de tutoriales con motioneyeos y PiCockpit, ademas de un trabajo muy interesante sobre la implementación de este sistema
+
+- <a href="https://computerhoy.20minutos.es/tecnologia/como-crear-propio-sistema-vigilancia-hogar-raspberry-pi-1398086" target="_blank">sistema de vigilancia para el hogar</a>.
+- <a href="https://picockpit.com/raspberry-pi/es/como-construir-una-camara-de-seguridad-con-una-raspberry-pi/" target="_blank">cámara de seguridad</a>.
+- <a href="https://files.core.ac.uk/download/pdf/132092519.pdf" target="_blank">UNIVERSITAT AUTÒNOMA DE BARCELONA (UAB), Sistema de videovigilancia a través de una Raspberry Pi, Aitor Domene-Sánchez</a>.
+<br>
+<br>
+
+## Bot de notificaciones
+Usar la Raspberry Pi para enviar mensajes automáticos a Telegram o Discord (incluso más), te puede avisarte de casi cualquier cosa: cuando termine una descarga torrent, si hay un corte de energía y se activa la UPS, si un sensor de la estación meteorológica detecta algo, etc. Realmente es sencillo.
+
+- <a href="https://www.flopy.es/crea-un-bot-de-telegram-para-tu-raspberry-ordenale-cosas-y-habla-con-ella-a-distancia/" target="_blank">guia</a>.
+- <a href="https://www.atlantic.net/dedicated-server-hosting/how-to-create-a-chat-server-using-matrix-synapse-and-element-on-ubuntu-24-04/" target="_blank">guia #2</a>.
+- <a href="https://www.instructables.com/Set-up-Telegram-Bot-on-Raspberry-Pi/" target="_blank">esta es con la Pico, pero es posible con la version normal</a>.
+<br>
+<br>
+
+
+## Servidor de Mensajería Instantánea Matrix
+Hostear tu propio servidor de chat privado y descentralizado, similar a Slack o Discord, pero con tu propio control de datos. Es un proyecto de "soberanía digital" muy popular. Es más complejo que los otros, pero muy gratificante.
+
+- <a href="https://ugeek.github.io/blog/post/2021-01-28-servidor-de-mensajeria-matrix-synapse-en-raspberry-ubuntu-debian--con-docker.html" target="_blank">guia #1</a>.
+- <a href="https://www.atlantic.net/dedicated-server-hosting/how-to-create-a-chat-server-using-matrix-synapse-and-element-on-ubuntu-24-04/" target="_blank">guia #2</a>.
+- <a href="https://theselfhostingblog.com/posts/self-hosting-your-own-matrix-server-on-a-raspberry-pi/" target="_blank">guia #3</a>.
+<br>
+<br>
+
+
+## Nodo IPFS
+Hostear tu propio nodo IPFS te permite participar en la web descentralizada y persistente (Web3). En lugar de depender de servidores centralizados (como Google Drive o Amazon S3), IPFS utiliza una red peer-to-peer (P2P) para almacenar y compartir archivos. Al ejecutar un nodo, puedes anclar (almacenar de forma persistente) contenido valioso, asegurando que permanezca accesible en la red global y resistente a la censura. Es un proyecto clave para entender y construir el futuro de internet.
+
+- <a href="https://pinata.cloud/blog/how-to-run-ipfs-on-a-raspberry-pi/" target="_blank">guia #1</a>.
+- <a href="https://medium.com/@nem25/ipfs-node-on-raspberry-pi-3-7f5945f021c4" target="_blank">guia #2</a>.
+- <a href="https://gist.github.com/NatoBoram/09d244ab02af16fecb62b917f7bee3c0" target="_blank">guia #3</a>.
+- <a href="https://gonzalezmas.es/post/2021-01-20-ipfs-en-pi/" target="_blank">guia #4</a>.
+- <a href="https://www.reddit.com/r/ipfs/comments/thpgt1/a_mostly_complete_guide_to_hosting_a_public_ipfs/?tl=es-es" target="_blank">guia #5</a>.
+- <a href="https://forums.raspberrypi.com/viewtopic.php?t=327685" target="_blank">guia #6</a>.
+
+<br>
+<br>
+
+
+## Cluster de Computación Paralela (MPI y BOINC)
+Este proyecto te permite utilizar la potencia de tu Raspberry Pi (o varias de ellas) para abordar problemas de cálculo intensivo, ya sea para tus propios experimentos o para la investigación global. Es mi favorita por si no tienes de momento ningun uso para tu raspberry pi, bueno, con esto podras ayudar un monton hasta que de decidas :D
+
+**BOINC (Contribución Científica Global)**
+
+BOINC te conecta a una vasta red de computación distribuida que apoya proyectos científicos de renombre (como la búsqueda de vida extraterrestre, el mapeo de proteínas para curas médicas o el modelado climático). Tu Pi se conecta a la red, descarga automáticamente pequeñas tareas de cálculo y las procesa utilizando los ciclos de CPU que no estás usando. Es una forma sencilla de donar potencia de cómputo a la ciencia, incluso con una sola Pi.
+
+**MPI (Computación Distribuida Propia)**
+
+MPI (Message Passing Interface) es un estándar para crear tus propios mini-supercomputadores. Si tienes varias Raspberry Pi conectadas en red (un cluster), MPI permite que todos los núcleos de todos tus dispositivos se comuniquen y trabajen en un único problema grande al mismo tiempo. En lugar de ejecutar cuatro tareas lentas, ejecutas una tarea cuatro veces más rápido. Es esencial para:
+
+- Aprender Computación de Alto Rendimiento (HPC): Entender cómo se coordinan las supercomputadoras.
+- Ejecutar Simulaciones: Dividir cálculos complejos (como simulaciones de física o grandes análisis de datos) en partes manejables para que tu cluster las resuelva en paralelo.
+
+
+Tras esto, dejo algunos tutoriales:
+
+- <a href="https://pimylifeup.com/raspberry-pi-boinc/" target="_blank">guia #1</a>.
+- <a href="https://blackdevice.com/contribute-science-raspberry-pi-boinc/" target="_blank">guia #2</a>.
+- <a href="https://www.youtube.com/watch?v=tNpLyUT8Tr4" target="_blank">guia #3</a>.
+- <a href="https://www.youtube.com/watch?v=-0jBww1pPAI" target="_blank">guia #4</a>.
+- <a href="https://www.reddit.com/r/BOINC/comments/1hythlx/running_boinc_on_a_raspberry_pi_cluster_my/" target="_blank">guia #5</a>.
+- <a href="https://efmer.com/boinctasks/raspberry-pi/" target="_blank">guia #6</a>.
+- <a href="https://stfn.pl/blog/17-rpi4-rpi5-boinc/" target="_blank">guia #6</a>.
+
 <br>
 <br>
 
