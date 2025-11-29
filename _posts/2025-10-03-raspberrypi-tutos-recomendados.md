@@ -36,14 +36,15 @@ Lo que empezó como un intento de hacer una simple guía referencial de Raspberr
 - [Home Assistant OS](#home-assistant-os)
 - [Estación meteorológica](#estación-meteorológica)
 - [Servidor Web](#servidor-web)
-- [Servidor Torrent/Seedbox](servidor-torrentseedbox)
+- [Servidor Torrent/Seedbox](#servidor-torrentseedbox)
 - [Servidor de impresión](#servidor-de-impresión)
 - [Servidor de Gitea](#servidor-de-gitea)
 - [Juegos en repositorios](#juegos-en-repositorios)
 - [Sistema de vigilancia](#sistema-de-vigilancia)
 - [Bot de notificaciones](#bot-de-notificaciones)
 - [Servidor de Mensajería Instantánea Matrix](#servidor-de-mensajería-instantánea-matrix)
-- [Nodo IPFS](#sistema-de-vigilancia)
+- [Nodo IPFS](#nodo-ipfs)
+- [Cluster de Computación Paralela (MPI y BOINC)](#cluster-de-computación-paralela-mpi-y-boinc)
 - [Proyectos Raspberry Pi](#proyectos-raspberry-pi)
 <br>
 <br>
@@ -711,6 +712,20 @@ Hostear tu propio nodo IPFS te permite participar en la web descentralizada y pe
 
 
 ## Cluster de Computación Paralela (MPI y BOINC)
+<div style="text-align: center;">
+    <img
+        src="{{ "/assets/images/bionicraspy.jpg" | relative_url }}"
+        alt="Texto alternativo de la imagen"
+        style="
+            border-radius: 15px;
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        "
+    />
+</div>
+<br>
 Este proyecto te permite utilizar la potencia de tu Raspberry Pi (o varias de ellas) para abordar problemas de cálculo intensivo, ya sea para tus propios experimentos o para la investigación global. Es mi favorita por si no tienes de momento ningun uso para tu raspberry pi, bueno, con esto podras ayudar un monton hasta que de decidas :D
 
 **BOINC (Contribución Científica Global)**
