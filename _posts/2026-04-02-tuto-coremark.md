@@ -22,7 +22,7 @@ sudo apt update
 sudo apt install build-essential git
 ```
 
-> **⚠️ Importante (Haz esto antes de empezar):** Para que las métricas sean exactas, cierra el navegador y cualquier proceso pesado. Pon tu CPU en modo alto rendimiento para que la frecuencia no baje durante las pruebas:
+> **Importante:** Para que las métricas sean exactas, cierra el navegador y cualquier proceso pesado. Pon tu CPU en modo alto rendimiento para que la frecuencia no baje durante las pruebas:
 > ```bash
 > echo "performance" | sudo tee /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 > ```
@@ -134,11 +134,20 @@ Busca en la terminal la línea que dice: **`Iterations/Sec : XXXXXX.XXXXXX`**. E
 1. **Frecuencia Real:** Abre otra terminal y ejecuta `watch grep "cpu MHz" /proc/cpuinfo` para ver a qué velocidad exacta corrió tu CPU, tambien podrias ejecutar el clasico `htop` o `btop`. Supongamos que es **4200 MHz**. Nos interesa que esta frecuencia media sea sostenida durante el mayor tiempo posible debido a que a veces el CPU hace un "turbo" los primeros 2 segundos y luego baja.
 
 3. **La Fórmula del IPC:**
-   $$\text{IPC (CoreMark/MHz)} = \frac{\text{Iterations/Sec (Single)}}{\text{Frecuencia en MHz}}$$
+```
+   La Fórmula del IPC:
 
-**Ejemplo típico de un Zen 2:**
+          Iterations/Sec (Single)
+  IPC = -------------------------
+            Frecuencia en MHz
+```
+**A modo de ejemplo con un núcleo Zen2:**
 Si obtienes **18,900 Iterations/Sec** y tu frecuencia es **4,200 MHz**:
-$$\frac{18900}{4200} = 4.5 \text{ CoreMark/MHz}$$
+```
+18,900 Iterations/Sec
+    --------------------- = 4.5 CoreMark/MHz
+          4,200 MHz
+```
 *(Esto dice que, en promedio, el procesador está terminando 4.5 instrucciones por cada ciclo de reloj en un solo núcleo).*
 
 ---
@@ -164,7 +173,9 @@ Ejecutamos la prueba multihilo con los mismos parámetros, revisa la carpeta don
 Vuelve a buscar la línea **`Iterations/Sec : XXXXXX.XXXXXX`** en el resultado de esta última prueba. Ahora vamos a cruzar ambos datos para ver qué tan bien escalan tus núcleos al trabajar en conjunto.
 
 **La Fórmula:**
-$$\text{Factor de Escalado} = \frac{\text{Iterations/Sec (Multi)}}{\text{Iterations/Sec (Single)}}$$
+```
+Factor de Escalado = Iterations/Sec (Multi) / Iterations/Sec (Single)
+```
 
 **Ejemplo con datos reales:**
 *   **Single Core:** 29,455.08 Iterations/Sec.
@@ -179,7 +190,7 @@ Tendriamos un escalado de **5.86x**. *(Nota: Es completamente normal que en 8 n�
 Sobre el tema de la escala podria decirse que si tu factor de escalado es:
 
 - Cercano al número de núcleos FÍSICOS: Tu CPU está escalando de forma casi perfecta.
-- Mayor al número de núcleos FÍSICOS (pero menor a los hilos): Estás viendo el beneficio real del SMT/Hyper-Threading (como tu 5.86x en un 4 núcleos/8 hilos).
+- Mayor al número de núcleos FÍSICOS (pero menor a los hilos): Estás viendo el beneficio real del SMT/Hyper-Threading (como el 5.86x en un 4 núcleos/8 hilos).
 - Muy por debajo de los núcleos físicos: Probablemente tienes un cuello de botella en la temperatura (Thermal Throttling) o en el ancho de banda de la memoria RAM.
 
 A continuacion presento mi tabla de procesadores donde he ejecutado tal cual estas pruebas:
