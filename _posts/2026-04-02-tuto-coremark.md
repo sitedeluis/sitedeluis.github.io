@@ -46,7 +46,7 @@ make PORT_LINUX=linux-gnu-gcc TARGET=coremark_single XCFLAGS="-DPERFORMANCE_RUN=
 Una vez termine, lanza la prueba con estos parámetros (el `500000` asegura que correrá el tiempo suficiente sin importar lo rápida que sea tu CPU):
 
 ```bash
-./coremark_single 0x3415 0x3415 0x66 500000 7 1 2000
+./coremark.exe 0x3415 0x3415 0x66 500000 7 1 2000
 ```
 
 ### 3.1 Compilación Cruzada para ARM y RISC-V
@@ -117,12 +117,12 @@ Si tu sistema es de 32 bits, cambia todos los prefijos `riscv64-` por `riscv32-`
 Como pequeño tip por si se pierde:
 
 
-| Arquitectura | Prefijo del Toolchain | Flag de Arquitectura `(-march)`|
+| Arquitectura | Prefijo del Toolchain | Flag de Arquitectura (-march)|
 | ------------- | ------------- |------------- |
-| ARM 64-bit | `aarch64-linux-gnu-` | `armv8-a` |
-| ARM 32-bit | `arm-linux-gnueabihf-` | `armv7-a` (o `armv6` para RPi 1) |
-| RISC-V 64-bit | `riscv64-linux-gnu-` | `rv64gc` |
-| RISC-V 32-bit | `riscv32-linux-gnu-` | `rv32gc` |
+| ARM 64-bit | aarch64-linux-gnu- | armv8-a |
+| ARM 32-bit | arm-linux-gnueabihf- | armv7-a (o armv6 para RPi 1) |
+| RISC-V 64-bit | riscv64-linux-gnu- | rv64gc |
+| RISC-V 32-bit | riscv32-linux-gnu- | rv32gc |
 
 
 Eso si, recordar que existen muchas variantes de RISC-V (RV32, RV64, con diferentes extensiones). Asegúrate de que tu toolchain coincida con la arquitectura exacta de tu placa. Si tu placa usa un perfil bare-metal (sin Linux), necesitarás un porting diferente.
@@ -182,8 +182,10 @@ Factor de Escalado = Iterations/Sec (Multi) / Iterations/Sec (Single)
 *   **Multi Core (8 hilos):** 172,659.38 Iterations/Sec.
 
 Si dividimos el resultado Multi entre el Single:
-$$\frac{172,659}{29,455} \approx 5.86$$
-
+```
+Cálculo de eficiencia:
+Multi (172,659) / Single (29,455) = 5.86x
+```
 Tendriamos un escalado de **5.86x**. *(Nota: Es completamente normal que en 8 núcleos el escalado no sea 8x perfecto debido a la sobrecarga del sistema y la compartición de caché/L3, por lo que un 5.86x es un resultado excelente y asi tambien podemos decirlo de configuraciones con mas nucleos, no es directamente proporcional al numero de hilos).*
 
 ### 7. Escalabilidad:
@@ -193,22 +195,40 @@ Sobre el tema de la escala podria decirse que si tu factor de escalado es:
 - Mayor al número de núcleos FÍSICOS (pero menor a los hilos): Estás viendo el beneficio real del SMT/Hyper-Threading (como el 5.86x en un 4 núcleos/8 hilos).
 - Muy por debajo de los núcleos físicos: Probablemente tienes un cuello de botella en la temperatura (Thermal Throttling) o en el ancho de banda de la memoria RAM.
 
-A continuacion presento mi tabla de procesadores donde he ejecutado tal cual estas pruebas:
+A continuación presento mi tabla de procesadores donde he ejecutado tal cual estas pruebas:
 
+<div class="table-wrapper" markdown="block">
 
-| Procesador | Arquitectura | Núcleos/Hilos | Frecuencia Sostenida (MHz)| Versión GCC | Kernel Linux | Single-Core (It/s) | Multi-Core (It/s) | CoreMark/MHz (IPC)| Factor Escalado|
-| ------------- | ------------- |------------- |------------- |------------- |------------- |------------- |------------- |------------- |
-|Ryzen 3 4100|x86_64|4/8|~4090|14.2|6.19.8+deb13-amd64|29.455,08|172.659,38|7.20|5.86x|
+| Procesador |ISA|Microarquitectura|Litografía (nm)|Núcleos/Hilos | Frecuencia Sostenida (MHz)| Versión GCC | Kernel Linux | Single-Core (It/s)|Multi-Core (It/s)|CoreMark/MHz (IPC)|Factor Escalado|
+| ------------- | ------------- |------------- |------------- |------------- |------------- |------------- |------------- |------------- |------------- |------------- |------------- |
+|Ryzen 3 4100|x86_64|Zen2|7nm|4/8|~4090|14.2|6.19.8+deb13-amd64|29455.08|172659.38|7.20|5.86x|
+|Celeron N2830|x86_64|Silvermont|22nm|2/2|~2416|12.2|6.1.0-44-amd64|8585.90|16236.40|3.55|1.89x|
+|i3-2330M|x86_64|Sandy Bridge|32nm|2/4|~2195|14.2|6.12.74+deb13+1-amd64|13159.97|36206.95|5.99|2.75x|
 
-
+</div>
 Si quieres obtener datos rapidos:
 
-- Procesador y Núcleos: `lscpu | grep -E "Model name|CPU\(s\):|Thread\(s\) per core"`
+- Procesador y Núcleos:
+```
+lscpu | grep -E "Model name|CPU\(s\):|Thread\(s\) per core"
+```
 
-- Kernel: `uname -a`
+- Kernel:
+```
+uname -a
+```
 
-- Versión de GCC: `gcc --version | head -n 1`
+- Versión de GCC:
+```
+gcc --version | head -n 1
+```
 
-- Frecuencia exacta durante el test: `watch -n 1 "grep 'cpu MHz' /proc/cpuinfo"` (mira la terminal mientras corre el benchmark).
+- Frecuencia exacta durante el test:
+```
+watch -n 1 "grep 'cpu MHz' /proc/cpuinfo"
+```
+(mira la terminal mientras corre el benchmark).
 
+## Notas posteriores:
 
+- Nota del 4 de abril: Añadí el Intel Celeron N8230 y el i3-2330m a la tabla.
